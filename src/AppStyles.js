@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ClimaContainer = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 30%, #1e40af 80%);
   padding: 20px;
   display: flex;
   flex-direction: column;

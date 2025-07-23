@@ -75,7 +75,7 @@ export const InputCidade = styled.input`
 
 export const BotaoBuscar = styled.button`
   padding: 14px 24px;
-  background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+  background: linear-gradient(135deg, #00b894 0%, #10b981 100%);
   color: #ffffff;
   border: none;
   border-radius: 12px;

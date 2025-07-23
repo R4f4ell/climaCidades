@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const ClimaInfo = styled.div`
   text-align: center;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.19);
   backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 30px;
   margin-bottom: 25px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   width: 100%;
   max-width: 400px;
   transition: all 0.3s ease;
