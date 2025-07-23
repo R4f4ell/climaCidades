@@ -1,12 +1,20 @@
-# React + Vite
+# Clima das Cidades
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicativo web desenvolvido com React para exibir a previsão do tempo em tempo real. O usuário pode buscar uma cidade e visualizar o clima atual, incluindo temperatura e condição climática, além da previsão para as próximas horas. A aplicação consome dados da API OpenWeather e aplica boas práticas de acessibilidade, semântica e performance no front-end.
 
-Currently, two official plugins are available:
+## 🔧 Tecnologias
+- React
+- Vite
+- CSS
+- Styled Components
+- API OpenWeather
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
+- Campo de texto para o usuário digitar o nome da cidade
+- Botão "Buscar" para iniciar a consulta sobre a cidade informada
+- Exibição das condições climáticas atuais sobre a cidade desejada
+- Previsão climática para as próximas horas
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔗 Links
+- Projeto online: https://clima-cidades-blush.vercel.app
+- Código-fonte: https://github.com/R4f4ell/climaCidades
