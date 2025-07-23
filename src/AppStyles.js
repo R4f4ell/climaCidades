@@ -1,19 +1,60 @@
 import styled from "styled-components";
 
 export const ClimaContainer = styled.div`
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #89cff0, #005c99);
-  color: white;
   min-height: 100vh;
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 70px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Mobile - 360x800, 390x844, 412x1040 */
+  @media (max-width: 480px) {
+    padding: 15px 10px;
+    min-height: 100vh;
+  }
+
+  /* Tablet - 768x1024, 800x1280 */
+  @media (min-width: 481px) and (max-width: 1024px) {
+    padding: 30px 20px;
+  }
+
+  /* Desktop - 1366x720, 1440x846, 1920x832 */
+  @media (min-width: 1025px) {
+    padding: 40px;
+    justify-content: flex-start;
+    padding-top: 60px;
+  }
 `;
 
-export const Titulo = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 20px;
+export const Titulo = styled.h1`
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+
+  /* Tablet */
+  @media (min-width: 481px) and (max-width: 1024px) {
+    font-size: 2.4rem;
+    margin-bottom: 35px;
+  }
+
+  /* Desktop */
+  @media (min-width: 1025px) {
+    font-size: 2.6rem;
+    margin-bottom: 40px;
+  }
 `;
 
 export const InputCidade = styled.input`

@@ -11,7 +11,9 @@ const Previsao = ({ previsoes }) => {
               src={`http://openweathermap.org/img/wn/${previsao.weather[0].icon}.png`}
               alt={previsao.weather[0].description}
             />
-            {previsao.main.temp}°C - {previsao.weather[0].description}
+            <div className="info-text">
+              <span className="temperature">{previsao.main.temp}°C</span> - {previsao.weather[0].description}
+            </div>
           </li>
         ))}
       </ul>
