@@ -156,7 +156,7 @@ export const PrevisaoContainer = styled.div`
   @media (min-width: 1025px) {
     padding: 28px 30px;
     margin-top: 28px;
-    max-width: 620px;
+    max-width: 450px;
 
     h4 {
       font-size: 2rem;
@@ -164,14 +164,12 @@ export const PrevisaoContainer = styled.div`
     }
 
     ul {
-      gap: 13px;
-
       li {
         padding: 16px 20px;
 
         img {
-          width: 70px;
-          height: 70px;
+          width: 60px;
+          height: 60px;
           margin-right: 16px;
         }
 
