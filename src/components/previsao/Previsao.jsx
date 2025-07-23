@@ -1,4 +1,3 @@
-import React from "react";
 import { PrevisaoContainer } from "./PrevisaoStyles";
 
 const Previsao = ({ previsoes }) => {

@@ -1,4 +1,3 @@
-import React from "react";
 import { BuscaContainer, InputCidade, BotaoBuscar } from "./BuscaStyles";
 
 const Busca = ({ cidade, setCidade, buscarClima }) => {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import ClimaAtual from "./components/ClimaAtual";
-import Previsao from "./components/Previsao";
-import Busca from "./components/Busca";
+import ClimaAtual from "./components/climaAtual/ClimaAtual";
+import Previsao from "./components/previsao/Previsao";
+import Busca from "./components/busca/Busca";
 
 import { ClimaContainer, Titulo } from "./AppStyles";
 

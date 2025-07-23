@@ -1,4 +1,3 @@
-import React from "react";
 import { ClimaInfo } from "./ClimaAtualStyles";
 
 const ClimaAtual = ({ clima }) => {
