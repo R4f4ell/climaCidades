@@ -16,5 +16,5 @@ Aplicativo web desenvolvido com React para exibir a previsão do tempo em tempo 
 - Previsão climática para as próximas horas
 
 ## 🔗 Links
-- Projeto online: https://clima-cidades-blush.vercel.app
+- Projeto online: https://climacidades.rafaelldev.com
 - Código-fonte: https://github.com/R4f4ell/climaCidades
