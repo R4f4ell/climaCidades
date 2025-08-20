@@ -5,8 +5,8 @@ import ClimaAtual from "./components/climaAtual/ClimaAtual";
 import Previsao from "./components/previsao/Previsao";
 import Busca from "./components/busca/Busca";
 
-import { ClimaContainer, Titulo } from "./AppStyles";
 import useGeolocation from "./hooks/useGeolocation";
+import "./app.scss";
 
 const App = () => {
   const [cidade, setCidade] = useState("");
@@ -14,7 +14,6 @@ const App = () => {
   const [previsao, setPrevisao] = useState([]);
 
   const apiKey = import.meta.env.VITE_API_KEY || "";
-
   const { coords, error: geoError } = useGeolocation();
 
   useEffect(() => {
@@ -55,16 +54,18 @@ const App = () => {
   };
 
   return (
-    <ClimaContainer>
-      <Titulo as="h1">Condições Climáticas</Titulo>
+    <main>
+      <section className="app">
+        <h1 className="app__title">Condições Climáticas</h1>
 
-      {/* --- Início da seção de busca --- */}
-      <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
+        {/* --- Início da seção de busca --- */}
+        <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
 
-      {clima && <ClimaAtual clima={clima} />}
-      {previsao.length > 0 && <Previsao previsoes={previsao} />}
-      {geoError && <p role="alert">Não foi possível obter sua localização.</p>}
-    </ClimaContainer>
+        {clima && <ClimaAtual clima={clima} />}
+        {previsao.length > 0 && <Previsao previsoes={previsao} />}
+        {geoError && <p role="alert">Não foi possível obter sua localização.</p>}
+      </section>
+    </main>
   );
 };
 

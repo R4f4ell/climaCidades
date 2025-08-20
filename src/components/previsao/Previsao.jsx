@@ -1,10 +1,17 @@
-import { PrevisaoContainer } from "./PrevisaoStyles";
-import { getIconUrl, roundTemp, buildWeatherAlt } from "../../utils/weatherFormat";
+import "./previsao.scss";
+import {
+  getIconUrl,
+  roundTemp,
+  buildWeatherAlt,
+} from "../../utils/weatherFormat";
 import { hasForecastItem } from "../../utils/guards";
 
 const Previsao = ({ previsoes }) => {
   return (
-    <PrevisaoContainer as="section" aria-label="Previsão do tempo para as próximas horas">
+    <div
+      className="previsao"
+      aria-label="Previsão do tempo para as próximas horas"
+    >
       <h3>Previsão para as próximas horas</h3>
       <ul>
         {previsoes.map((previsao) => {
@@ -17,7 +24,9 @@ const Previsao = ({ previsoes }) => {
           return (
             <li
               key={dt}
-              aria-label={`Previsão em ${new Date(dt * 1000).toLocaleTimeString("pt-BR", {
+              aria-label={`Previsão em ${new Date(
+                dt * 1000
+              ).toLocaleTimeString("pt-BR", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}: ${roundTemp(temp)} graus Celsius, ${description}`}
@@ -28,13 +37,14 @@ const Previsao = ({ previsoes }) => {
                 loading="lazy"
               />
               <div className="info-text">
-                <span className="temperature">{roundTemp(temp)}°C</span> - {description}
+                <span className="temperature">{roundTemp(temp)}°C</span> -{" "}
+                {description}
               </div>
             </li>
           );
         })}
       </ul>
-    </PrevisaoContainer>
+    </div>
   );
 };
 

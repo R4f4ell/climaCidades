@@ -1,0 +1,85 @@
+@use "./variables" as v;
+
+/* Fonte Inter para o site inteiro */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root { color-scheme: dark; }
+
+body {
+  font-family: v.$font-family-base;
+  background: v.color(bg);
+  color: v.color(text);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 { color: v.color(text); }
+p, a, li, span { color: v.color(text); }
+a { text-decoration: none; }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/* Mixins básicos para evitar repetição */
+@mixin card($padding: 16px, $radius: 12px) {
+  background: v.color(surface);
+  border: 1px solid v.color(border);
+  border-radius: $radius; /* px direto */
+  padding: $padding;
+}
+
+@mixin list-clean {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- NOVOS MIXINS PARA CONTROLES (input/botão) ---- */
+@mixin control-base {
+  min-height: 44px; /* acessível */
+  border: 1px solid v.color(border);
+  border-radius: 10px; /* px direto, seu padrão */
+  font: inherit;
+  line-height: 1.2;
+}
+
+@mixin input-base {
+  @include control-base;
+  background: v.color(white);
+  color: #111;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+
+  &::placeholder { color: v.color(muted); }
+
+  &:hover { border-color: rgba(255,255,255,0.35); }
+
+  &:focus {
+    border-color: v.color(primary);
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.20);
+  }
+
+  /* autofill visível em tema escuro */
+  &:-webkit-autofill {
+    -webkit-text-fill-color: #111;
+    -webkit-box-shadow: 0 0 0 1000px v.color(white) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@mixin button-solid($bg: success, $text: white) {
+  @include control-base;
+  border: 1px solid transparent;
+  background: v.color($bg);
+  color: v.color($text);
+  font-weight: 500;
+  cursor: pointer;
+  transition: filter 120ms ease, transform 120ms ease;
+
+  &:hover { filter: brightness(0.94); }
+  &:active { transform: translateY(0.5px); }
+  &:focus { outline: 2px solid rgba(16,185,129,0.35); outline-offset: 2px; }
+}

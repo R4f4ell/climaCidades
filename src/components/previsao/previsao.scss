@@ -1,0 +1,109 @@
+@use "../../styles/variables" as v;
+@use "../../styles/elements" as e;
+
+/* (opcional) Wrapper só se você usar */
+.previsao-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* MOBILE — mantém como estava */
+.previsao {
+  @include e.card(20px, 14px);
+  width: 100%;
+  max-width: 100%;        /* mobile: ocupar bem */
+  margin-top: 28px;
+  margin-inline: auto;    /* centraliza quando encolher em telas maiores */
+
+  h3 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+  }
+
+  ul {
+    @include e.list-clean;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid v.color(border);
+      border-radius: 10px;
+      color: v.color(text);
+
+      img {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+      }
+
+      .info-text {
+        flex: 1;
+        font-size: 0.95rem;
+        text-transform: capitalize;
+
+        .temperature {
+          font-weight: 500;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+/* TABLET — encolhe de verdade o CARD (força largura fixa) */
+@include v.respond(tab768) {
+  .app .previsao {
+    width: 500px;
+    max-width: 500px;
+    margin-top: 32px;
+    padding: 18px; /* leve ajuste de escala do card */
+
+    h3 { font-size: 1.25rem; margin-bottom: 16px; }
+
+    ul li {
+      padding: 14px 16px;
+      img { width: 56px; height: 56px; }
+      .info-text { font-size: 1.05rem;
+        .temperature { font-size: 1.05rem; }
+      }
+    }
+  }
+}
+
+/* DESKTOP — ainda menor */
+@include v.respond(desk1366) {
+  .app .previsao {
+    width: 580px;
+    max-width: 580px;
+    margin-top: 36px;
+    padding: 16px;
+
+    h3 { font-size: 1.3rem; }
+
+    ul li {
+      padding: 14px 18px;
+      img { width: 58px; height: 58px; }
+      .info-text { font-size: 1.1rem;
+        .temperature { font-size: 1.1rem; }
+      }
+    }
+  }
+}
+
+/* DESKTOP GRANDE — mais compacto */
+@include v.respond(desk1440) {
+  .app .previsao {
+    width: 580px;
+    max-width: 580px;
+  }
+}
