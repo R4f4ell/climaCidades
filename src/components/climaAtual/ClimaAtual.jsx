@@ -1,17 +1,26 @@
 import { ClimaInfo } from "./ClimaAtualStyles";
+import { getIconUrl, roundTemp, buildWeatherAlt } from "../../utils/weatherFormat";
+import { hasWeatherPayload } from "../../utils/guards";
 
 const ClimaAtual = ({ clima }) => {
+  if (!hasWeatherPayload(clima)) return null;
+
+  const { name, main, weather } = clima;
+  const { temp } = main;
+  const { icon, description } = weather[0];
+
   return (
-    <ClimaInfo as="section" aria-label={`Clima atual em ${clima.name}`}>
-      <h3>{clima.name}</h3>
+    <ClimaInfo as="section" aria-label={`Clima atual em ${name}`}>
+      <h2>{name}</h2>
       <img
-        src={`http://openweathermap.org/img/wn/${clima.weather[0].icon}.png`}
-        alt={`Ícone representando o clima: ${clima.weather[0].description}`}
+        src={getIconUrl(icon)}
+        alt={buildWeatherAlt(description)}
+        loading="lazy"
       />
-      <p aria-label={`Temperatura atual: ${clima.main.temp} graus Celsius`}>
-        {clima.main.temp}°C
+      <p aria-label={`Temperatura atual: ${roundTemp(temp)} graus Celsius`}>
+        {roundTemp(temp)}°C
       </p>
-      <p>{clima.weather[0].description}</p>
+      <p>{description}</p>
     </ClimaInfo>
   );
 };

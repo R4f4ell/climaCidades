@@ -6,6 +6,7 @@ import Previsao from "./components/previsao/Previsao";
 import Busca from "./components/busca/Busca";
 
 import { ClimaContainer, Titulo } from "./AppStyles";
+import useGeolocation from "./hooks/useGeolocation";
 
 const App = () => {
   const [cidade, setCidade] = useState("");
@@ -14,22 +15,25 @@ const App = () => {
 
   const apiKey = import.meta.env.VITE_API_KEY || "";
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+  const { coords, error: geoError } = useGeolocation();
 
+  useEffect(() => {
+    if (!coords) return;
+    const { latitude, longitude } = coords;
+
+    const fetchByCoords = async () => {
       try {
         const resposta = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=pt_br`
         );
-        setCidade(resposta.data.name);
         setClima(resposta.data);
       } catch (erro) {
         console.error("Erro ao obter clima por geolocalização:", erro);
       }
-    });
-  }, [apiKey]);
+    };
+
+    fetchByCoords();
+  }, [coords, apiKey]);
 
   const buscarClima = async () => {
     try {
@@ -37,12 +41,14 @@ const App = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
       );
 
-      const respostaPrevisao = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
-      );
+      if (respostaClima?.data?.name) {
+        const respostaPrevisao = await axios.get(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
+        );
 
-      setClima(respostaClima.data);
-      setPrevisao(respostaPrevisao.data.list.slice(0, 5));
+        setClima(respostaClima.data);
+        setPrevisao(respostaPrevisao.data.list.slice(0, 5));
+      }
     } catch (error) {
       console.error("Erro ao buscar dados do clima:", error);
     }
@@ -50,10 +56,14 @@ const App = () => {
 
   return (
     <ClimaContainer>
-      <Titulo>Condições Climáticas</Titulo>
+      <Titulo as="h1">Condições Climáticas</Titulo>
+
+      {/* --- Início da seção de busca --- */}
       <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
+
       {clima && <ClimaAtual clima={clima} />}
       {previsao.length > 0 && <Previsao previsoes={previsao} />}
+      {geoError && <p role="alert">Não foi possível obter sua localização.</p>}
     </ClimaContainer>
   );
 };

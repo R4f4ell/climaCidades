@@ -1,4 +1,5 @@
 import { BuscaContainer, InputCidade, BotaoBuscar } from "./BuscaStyles";
+import { srOnlyProps } from "../../utils/a11y";
 
 const Busca = ({ cidade, setCidade, buscarClima }) => {
   const handleBuscar = () => {
@@ -8,7 +9,7 @@ const Busca = ({ cidade, setCidade, buscarClima }) => {
 
   return (
     <BuscaContainer as="section" aria-label="Seção de busca por cidade">
-      <label htmlFor="cidade" style={{ display: "none" }}>
+      <label htmlFor="cidade" {...srOnlyProps()}>
         Digite o nome da cidade
       </label>
       <InputCidade
