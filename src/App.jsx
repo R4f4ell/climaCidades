@@ -14,7 +14,7 @@ const App = () => {
   const [previsao, setPrevisao] = useState([]);
 
   const apiKey = import.meta.env.VITE_API_KEY || "";
-  const { coords, error: geoError } = useGeolocation();
+  const { coords } = useGeolocation(); 
 
   useEffect(() => {
     if (!coords) return;
@@ -63,7 +63,6 @@ const App = () => {
 
         {clima && <ClimaAtual clima={clima} />}
         {previsao.length > 0 && <Previsao previsoes={previsao} />}
-        {geoError && <p role="alert">Não foi possível obter sua localização.</p>}
       </section>
     </main>
   );

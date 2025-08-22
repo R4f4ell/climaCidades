@@ -1,6 +1,5 @@
 @use "./variables" as v;
 
-/* Fonte Inter para o site inteiro */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root { color-scheme: dark; }
@@ -23,11 +22,10 @@ a { text-decoration: none; }
   padding-inline: 16px;
 }
 
-/* Mixins básicos para evitar repetição */
 @mixin card($padding: 16px, $radius: 12px) {
   background: v.color(surface);
   border: 1px solid v.color(border);
-  border-radius: $radius; /* px direto */
+  border-radius: $radius; 
   padding: $padding;
 }
 
@@ -37,11 +35,10 @@ a { text-decoration: none; }
   padding: 0;
 }
 
-/* ---- NOVOS MIXINS PARA CONTROLES (input/botão) ---- */
 @mixin control-base {
-  min-height: 44px; /* acessível */
+  min-height: 44px;
   border: 1px solid v.color(border);
-  border-radius: 10px; /* px direto, seu padrão */
+  border-radius: 10px; 
   font: inherit;
   line-height: 1.2;
 }
@@ -62,7 +59,6 @@ a { text-decoration: none; }
     box-shadow: 0 0 0 2px rgba(59,130,246,0.20);
   }
 
-  /* autofill visível em tema escuro */
   &:-webkit-autofill {
     -webkit-text-fill-color: #111;
     -webkit-box-shadow: 0 0 0 1000px v.color(white) inset;
