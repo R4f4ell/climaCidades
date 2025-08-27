@@ -58,7 +58,7 @@ const App = () => {
       <section className="app">
         <h1 className="app__title">Condições Climáticas</h1>
 
-        {/* --- Início da seção de busca --- */}
+        {/* Início da seção de busca */}
         <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
 
         {clima && <ClimaAtual clima={clima} />}

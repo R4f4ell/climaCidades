@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-// MOBILE
+// Mobile
 .previsao {
   @include e.card(20px, 14px);
   width: 100%;
@@ -59,7 +59,7 @@
   }
 }
 
-// TABLET 
+// Tablet 
 @include v.respond(tab768) {
   .app .previsao {
     width: 500px;
@@ -91,7 +91,7 @@
   }
 }
 
-// DESKTOP
+// Desktop
 @include v.respond(desk1366) {
   .app .previsao {
     width: 580px;
@@ -122,7 +122,7 @@
   }
 }
 
-// DESKTOP GRANDE
+// Desktop Grande
 @include v.respond(desk1440) {
   .app .previsao {
     width: 580px;
